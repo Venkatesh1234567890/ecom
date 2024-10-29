@@ -1,0 +1,486 @@
+﻿{% extends "base.html" %}
+{% load static %}
+{% block content %}
+	<!-- Body Start -->
+	<div class="wrapper">
+		<!-- Offers Start -->
+		<div class="main-banner-slider">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="owl-carousel offers-banner owl-theme">
+							<div class="item">
+								<div class="offer-item">								
+									<div class="offer-item-img">
+										<div class="gambo-overlay"></div>
+										<img src="{% static 'assets/images/banners/offer-1.jpg' %}" alt="">
+									</div>
+									<div class="offer-text-dt">
+										<div class="offer-top-text-banner">
+											<p>6% Off</p>
+											<div class="top-text-1">Buy More & Save More</div>
+											<span>Fresh Vegetables</span>
+										</div>
+										<a href="{% url 'filter_item' 'vegetables' %}" class="Offer-shop-btn hover-btn">Shop Now</a>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="offer-item">								
+									<div class="offer-item-img">
+										<div class="gambo-overlay"></div>
+										<img src="{% static 'assets/images/banners/offer-2.jpg' %}" alt="">
+									</div>
+									<div class="offer-text-dt">
+										<div class="offer-top-text-banner">
+											<p>5% Off</p>
+											<div class="top-text-1">Buy More & Save More</div>
+											<span>Fresh Fruits</span>
+										</div>
+										<a href="{% url 'filter_item' 'vegetables' %}" class="Offer-shop-btn hover-btn">Shop Now</a>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="offer-item">								
+									<div class="offer-item-img">
+										<div class="gambo-overlay"></div>
+										<img src="{% static 'assets/images/banners/offer-3.jpg' %}" alt="">
+									</div>
+									<div class="offer-text-dt">
+										<div class="offer-top-text-banner">
+											<p>3% Off</p>
+											<div class="top-text-1">Hot Deals on New Items</div>
+											<span>Daily Essentials Eggs & Dairy</span>
+										</div>
+										<a href="{% url 'filter_item' 'dairy' %}" class="Offer-shop-btn hover-btn">Shop Now</a>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="offer-item">								
+									<div class="offer-item-img">	
+										<div class="gambo-overlay"></div>
+										<img src="{% static 'assets/images/banners/offer-4.jpg' %}" alt="">
+									</div>
+									<div class="offer-text-dt">
+										<div class="offer-top-text-banner">
+											<p>2% Off</p>
+											<div class="top-text-1">Buy More & Save More</div>
+											<span>Beverages</span>
+										</div>
+										<a href="{% url 'filter_item' 'beverages' %}" class="Offer-shop-btn hover-btn">Shop Now</a>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="offer-item">								
+									<div class="offer-item-img">
+										<div class="gambo-overlay"></div>
+										<img src="{% static 'assets/images/banners/offer-5.jpg' %}" alt="">
+									</div>
+									<div class="offer-text-dt">
+										<div class="offer-top-text-banner">
+											<p>3% Off</p>
+											<div class="top-text-1">Buy More & Save More</div>
+											<span>Nuts & Snacks</span>
+										</div>
+										<a href="{% url 'filter_item' 'snacks' %}" class="Offer-shop-btn hover-btn">Shop Now</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Offers End -->
+		<!-- Categories Start -->
+		<div class="section145">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="main-title-tt">
+							<div class="main-title-left">
+								<span>Shop By</span>
+								<h2>Categories</h2>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="owl-carousel cate-slider owl-theme">
+							<div class="item">
+								<a href="{% url 'filter_item'  'vegetables' %}" class="category-item">
+									<div class="cate-img">
+										<img src="{% static 'assets/images/category/icon-1.svg' %}" alt="">
+									</div>
+									<h4>Vegetables & Fruits</h4>
+								</a>
+							</div>
+							<div class="item">
+								<a href="{% url 'filter_item'  'grocery' %}" class="category-item">
+									<div class="cate-img">
+										<img src="{% static 'assets/images/category/icon-2.svg' %}" alt="">
+									</div>
+									<h4> Grocery & Staples </h4>
+								</a>
+							</div>
+							<div class="item">
+								<a href="{% url 'filter_item'  'dairy' %}" class="category-item">
+									<div class="cate-img">
+										<img src="{% static 'assets/images/category/icon-3.svg' %}" alt="">
+									</div>
+									<h4> Dairy & Eggs </h4>
+								</a>
+							</div>
+							<div class="item">
+								<a href="{% url 'filter_item'  'beverages' %}" class="category-item">
+									<div class="cate-img">
+										<img src="{% static 'assets/images/category/icon-4.svg' %}" alt="">
+									</div>
+									<h4> Beverages </h4>
+								</a>
+							</div>
+							<div class="item">
+								<a href="{% url 'filter_item'  'snacks' %}" class="category-item">
+									<div class="cate-img">
+										<img src="{% static 'assets/images/category/icon-5.svg' %}" alt="">
+									</div>
+									<h4> Snacks </h4>
+								</a>
+							</div>
+							<div class="item">
+								<a href="{% url 'filter_item'  'home care' %}" class="category-item">
+									<div class="cate-img">
+										<img src="{% static 'assets/images/category/icon-6.svg' %}" alt="">
+									</div>
+									<h4> Home Care </h4>
+								</a>
+							</div>
+							<div class="item">
+								<a href="{% url 'filter_item'  'noodles' %}" class="category-item">
+									<div class="cate-img">
+										<img src="{% static 'assets/images/category/icon-7.svg' %}" alt="">
+									</div>
+									<h4> Noodles & Sauces </h4>
+								</a>
+							</div>
+							<div class="item">
+								<a href="{% url 'filter_item'  'personal care' %}" class="category-item">
+									<div class="cate-img">
+										<img src="{% static 'assets/images/category/icon-8.svg' %}" alt="">
+									</div>
+									<h4> Personal Care </h4>
+								</a>
+							</div>
+							<div class="item">
+								<a href="{% url 'filter_item'  'pet care' %}" class="category-item">
+									<div class="cate-img">
+										<img src="{% static 'assets/images/category/icon-9.svg' %}" alt="">
+									</div>
+									<h4> Pet Care </h4>
+								</a>
+							</div>
+							<div class="item">
+								<a href="{% url 'filter_item'  'meat' %}" class="category-item">
+									<div class="cate-img">
+										<img src="{% static 'assets/images/category/icon-10.svg' %}" alt="">
+									</div>
+									<h4> Meat & Seafood </h4>
+								</a>
+							</div>
+							<div class="item">
+								<a href="{% url 'filter_item'  'electronics' %}" class="category-item">
+									<div class="cate-img">
+										<img src="{% static 'assets/images/category/icon-11.svg' %}" alt="">
+									</div>
+									<h4> Electronics </h4>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Categories End -->
+		<!-- Featured Products Start -->
+		<div class="section145">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="main-title-tt">
+							<div class="main-title-left">
+								<span>For You</span>
+								<h2>Top Featured Products</h2>
+							</div>
+							<a href="{% url 'shop_grid' %}" class="see-more-btn">See All</a>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="owl-carousel featured-slider owl-theme">
+							{% for product in products %}
+							<div class="item">
+								<form method="POST" action="{% url 'add_to_cart' product.id %}">
+									{% csrf_token %}
+									<div class="product-item">
+										<a href="{% url 'single_product_view' product.id %}" class="product-img">
+											{% for i in product.images.all %}
+											{% if forloop.first %}
+											<img src="{{ i.image.url }}" alt="{{ product.title }}">
+											{% endif %}
+											{% endfor %}
+											<div class="product-absolute-options">
+												<span class="offer-badge-1">6% off</span>
+												<span class="like-icon" title="wishlist"></span>
+											</div>
+										</a>
+										<div class="product-text-dt">
+											<p>Available<span>{{ product.stock }}</span></p>
+											<h4>{{ product.title }}</h4>
+											<div class="product-price">₹{{product.selling_price}} <span>₹{{product.discount_price}}</span></div>
+											<div class="qty-cart">
+												<div class="quantity buttons_added">
+													<input type="button" value="-" class="minus minus-btn">
+													<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
+													<input type="button" value="+" class="plus plus-btn">
+												</div>
+												<button type="submit" class="cart-icon" style="background: none; border: none; padding: 0;">
+													<i class="uil uil-shopping-cart-alt"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Featured Products End -->
+		<!-- Best Values Offers Start -->
+		{% comment %} <div class="section145">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="main-title-tt">
+							<div class="main-title-left">
+								<span>Offers</span>
+								<h2>Best Values</h2>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<a href="#" class="best-offer-item">
+							<img src="{% static 'assets/images/best-offers/offer-1.jpg' %}" alt="">
+						</a>
+					</div>
+				</div>
+			</div>
+		</div> {% endcomment %}
+		<!-- Best Values Offers End -->
+		<!-- Vegetables and Fruits Start -->
+		<div class="section145">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="main-title-tt">
+							<div class="main-title-left">
+								<span>For You</span>
+								<h2>Fresh Vegetables </h2>
+							</div>
+							<a href="{% url 'shop_grid' %}" class="see-more-btn">See All</a>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="owl-carousel featured-slider owl-theme">
+							{% for product in products %}
+							{% if product.category == "vegetables" %}
+							<div class="item">
+								<form method="POST" action="{% url 'add_to_cart' product.id %}">
+									{% csrf_token %}
+									<div class="product-item">
+										<a href="{% url 'single_product_view' product.id %}" class="product-img">
+											{% for i in product.images.all %}
+											{% if forloop.first %}
+											<img src="{{ i.image.url }}" alt="">
+											{% endif %}
+											{% endfor %}
+											<div class="product-absolute-options">
+												<span class="offer-badge-1">6% off</span>
+												<span class="like-icon" title="wishlist"></span>
+											</div>
+										</a>
+										<div class="product-text-dt">
+											<p>Available<span>{{ product.stock }}</span></p>
+											<h4>{{ product.title }}</h4>
+											<div class="product-price">₹{{ product.selling_price }}<span>₹{{ product.selling_price }}</span></div>
+											<div class="qty-cart">
+												<div class="quantity buttons_added">
+													<input type="button" value="-" class="minus minus-btn">
+													<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
+													<input type="button" value="+" class="plus plus-btn">
+												</div>
+												<button type="submit" class="cart-icon" style="background: none; border: none; padding: 0;">
+													<i class="uil uil-shopping-cart-alt"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							{% endif %}
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Vegetables and Fruits Products End -->
+		 <!-- Vegetables and Fruits Start -->
+		<div class="section145">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="main-title-tt">
+							<div class="main-title-left">
+								<span>For You</span>
+								<h2>Fresh Fruits</h2>
+							</div>
+							<a href="{% url 'shop_grid' %}" class="see-more-btn">See All</a>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="owl-carousel featured-slider owl-theme">
+							{% for product in products %}
+							{% if product.category == "Fruits" %}
+							<div class="item">
+								<form method="POST" action="{% url 'add_to_cart' product.id %}">
+									{% csrf_token %}
+									<div class="product-item">
+										<a href="{% url 'single_product_view' product.id %}" class="product-img">
+											{% for i in product.images.all %}
+											{% if forloop.first %}
+											<img src="{{ i.image.url }}" alt="">
+											{% endif %}
+											{% endfor %}
+											<div class="product-absolute-options">
+												<span class="offer-badge-1">6% off</span>
+												<span class="like-icon" title="wishlist"></span>
+											</div>
+										</a>
+										<div class="product-text-dt">
+											<p>Available<span>{{ product.stock }}</span></p>
+											<h4>{{ product.title }}</h4>
+											<div class="product-price">₹{{ product.selling_price }}<span>₹{{ product.selling_price }}</span></div>
+											<div class="qty-cart">
+												<div class="quantity buttons_added">
+													<input type="button" value="-" class="minus minus-btn">
+													<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
+													<input type="button" value="+" class="plus plus-btn">
+												</div>
+												<button type="submit" class="cart-icon" style="background: none; border: none; padding: 0;">
+													<i class="uil uil-shopping-cart-alt"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							{% endif %}
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Vegetables and Fruits Products End -->
+		<!-- New Products Start -->
+		<div class="section145">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="main-title-tt">
+							<div class="main-title-left">
+								<span>For You</span>
+								<h2>Added New Products</h2>
+							</div>
+							<a href="{% url 'shop_grid' %}" class="see-more-btn">See All</a>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="owl-carousel featured-slider owl-theme">
+							{% for product in products %}
+							<div class="item">
+								<form method="POST" action="{% url 'add_to_cart' product.id %}">
+									{% csrf_token %}
+									<div class="product-item">
+										<a href="{% url 'single_product_view' product.id %}" class="product-img">
+											{% for i in product.images.all %}
+											{% if forloop.first %}
+											<img src="{{ i.image.url }}" alt="">
+											{% endif %}
+											{% endfor %}
+											<div class="product-absolute-options">
+												<span class="offer-badge-1">New</span>
+												<span class="like-icon" title="wishlist"></span>
+											</div>
+										</a>
+										<div class="product-text-dt">
+											<p>Available<span>{{ product.stock }}</span></p>
+											<h4>{{ product.title }}</h4>
+											<div class="product-price">₹{{ product.selling_price }}<span>₹{{ product.selling_price }}</span></div>
+											<div class="qty-cart">
+												<div class="quantity buttons_added">
+													<input type="button" value="-" class="minus minus-btn">
+													<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
+													<input type="button" value="+" class="plus plus-btn">
+												</div>
+												<button type="submit" class="cart-icon" style="background: none; border: none; padding: 0;">
+													<i class="uil uil-shopping-cart-alt"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+								</form>	
+							</div>
+							{% endfor %}
+							<div class="item">
+								<div class="product-item">
+									<a href="single_product_view.html" class="product-img">
+										<img src="{% static 'assets/images/product/img-9.jpg' %}" alt="">
+										<div class="product-absolute-options">
+											<span class="offer-badge-1">New</span>
+											<span class="like-icon" title="wishlist"></span>
+										</div>
+									</a>
+									<div class="product-text-dt">
+										<p>Available<span>(In Stock)</span></p>
+										<h4>Product Title Here</h4>
+										<div class="product-price">$10</div>
+										<div class="qty-cart">
+											<div class="quantity buttons_added">
+												<input type="button" value="-" class="minus minus-btn">
+												<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
+												<input type="button" value="+" class="plus plus-btn">
+											</div>
+											<span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- New Products End -->
+	</div>
+	<!-- Body End -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+{%  endblock %}
+
+

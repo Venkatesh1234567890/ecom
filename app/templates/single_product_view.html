@@ -1,0 +1,318 @@
+﻿{% extends "base.html" %}
+{% load static %}
+{% block content %}
+	<!-- Body Start -->
+	<div class="wrapper">
+		<div class="gambo-Breadcrumb">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+								<li class="breadcrumb-item"><a href="{% url 'filter_item' 'vegetables' %}">Vegetables & Fruits</a></li>
+								<li class="breadcrumb-item active" aria-current="page">Product Title</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="all-product-grid">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="product-dt-view">
+							<div class="row">
+								<div class="col-lg-4 col-md-4">
+									<div id="sync1" class="owl-carousel owl-theme">
+										{% if products.images.all %}
+											{% for p in products.images.all %}
+												{% if p.image %}
+													<div class="item">
+														<img src="{{ p.image.url }}" alt="{{ products.title }}">
+													</div>
+												{% endif %}
+											{% endfor %}
+										{% endif %}
+									</div>
+									<div id="sync2" class="owl-carousel owl-theme">
+										{% if products.images.all %}
+											{% for p in products.images.all %}
+												{% if p.image %}
+													<div class="item">
+														<img src="{{ p.image.url }}" alt="{{ products.title }}">
+													</div>
+												{% endif %}
+											{% endfor %}
+										{% endif %}
+									</div>
+								</div>
+								<div class="col-lg-8 col-md-8">
+									<div class="product-dt-right">
+										<h2>{{ products.title }}</h2>
+										<div class="no-stock">
+											<p class="pd-no">Product No.<span>{{ products.id }}</span></p>
+											<p class="stock-qty">Available<span>({{ products.stock }})</span></p>
+										</div>
+										<form class="add-to-cart-form" method="POST" action="{% url 'add_to_cart' products.id %}">
+											{% csrf_token %}
+											<div class="product-radio">
+												<ul class="product-now">
+													<li>
+														<input type="radio" id="p2" name="weight" value="1">
+														<label for="p2">1kg</label>
+													</li>
+													<li>
+														<input type="radio" id="p3" name="weight" value="2">
+														<label for="p3">2kg</label>
+													</li>
+													<li>
+														<input type="radio" id="p4" name="weight" value="3">
+														<label for="p4">3kg</label>
+													</li>
+												</ul>
+											</div>
+											<p class="pp-descp">{{ products.description }}</p>
+											<div class="product-group-dt">
+												<ul>
+													<li><div class="main-price color-discount">Discount Price<span>₹{{ products.selling_price }}</span></div></li>
+													<li><div class="main-price mrp-price">MRP Price<span>₹{{ products.discount_price }}</span></div></li>
+												</ul>
+												<ul class="gty-wish-share">
+													<li>
+														<div class="qty-product">
+															<div class="quantity buttons_added">
+																<input type="button" value="-" class="minus minus-btn">
+																<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
+																<input type="button" value="+" class="plus plus-btn">
+															</div>
+														</div>
+													</li>
+												</ul>
+												<ul class="ordr-crt-share">
+													<li>
+														<button type="submit" class="add-cart-btn hover-btn cart-submit">
+															<i class="uil uil-shopping-cart-alt"></i>Add to Cart
+														</button>
+													</li>
+													<li>
+														{% comment %} <button class="order-btn hover-btn">Order Now</button> {% endcomment %}
+														{% comment %} <a href="{% url 'add_to_cart' products.id  %}" class="cart-checkout-btn hover-btn">Order Now</a></li> {% endcomment %}
+														<button type="submit" class="cart-checkout-btn hover-btn cart-submit">
+															Order Now
+														</button>
+												</ul>
+											</div>
+										</form>										
+
+										<div class="pdp-details">
+											<ul>
+												<li>
+													<div class="pdp-group-dt">
+														<div class="pdp-icon"><i class="uil uil-usd-circle"></i></div>
+														<div class="pdp-text-dt">
+															<span>Lowest Price Guaranteed</span>
+															<p>Get difference refunded if you find it cheaper anywhere else.</p>
+														</div>
+													</div>
+												</li>
+												<li>
+													<div class="pdp-group-dt">
+														<div class="pdp-icon"><i class="uil uil-cloud-redo"></i></div>
+														<div class="pdp-text-dt">
+															<span>Easy Returns & Refunds</span>
+															<p>Return products at doorstep and get refund in seconds.</p>
+														</div>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4 col-md-12">
+						<div class="pdpt-bg">
+							<div class="pdpt-title">
+								<h4>More Like This</h4>
+							</div>
+							<div class="pdpt-body scrollstyle_4">
+								{% for data in datas %}
+								<div class="cart-item border_radius">
+									<a href="{% url 'single_product_view' data.id %}" class="cart-product-img">
+										{% for image in data.images.all %}
+										{% if forloop.first %}
+										<img src="{{ image.image.url }}" alt="{{ product.title }}">
+										{% endif %}
+										{% endfor %}
+										<div class="offer-badge">4% OFF</div>
+									</a>
+									<div class="cart-text">	
+										<h4>{{ data.title }}</h4>
+										<div class="cart-radio">
+											<ul class="kggrm-now">
+												<li>
+													<input type="radio" id="k1" name="cart1">
+													<label for="k1">0.50</label>
+												</li>
+												<li>
+													<input type="radio" id="k2" name="cart1">
+													<label for="k2">1kg</label>
+												</li>
+												<li>
+													<input type="radio" id="k3" name="cart1">
+													<label for="k3">2kg</label>
+												</li>
+												<li>
+													<input type="radio" id="k4" name="cart1">
+													<label for="k4">3kg</label>
+												</li>
+											</ul>
+										</div>
+										<div class="qty-group">
+											<div class="quantity buttons_added">
+												<input type="button" value="-" class="minus minus-btn">
+												<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
+												<input type="button" value="+" class="plus plus-btn">
+											</div>
+											<div class="cart-item-price">$12 <span>$15</span></div>
+										</div>
+									</div>
+								</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-8 col-md-12">
+						<div class="pdpt-bg">
+							<div class="pdpt-title">
+								<h4>Product Details</h4>
+							</div>
+							<div class="pdpt-body scrollstyle_4">
+								<div class="pdct-dts-1">
+									<div class="pdct-dt-step">
+										<h4>Description</h4>
+										<p>{{ products.description }}</p>
+									</div>
+									<div class="pdct-dt-step">
+										<h4>Benefits</h4>
+										<div class="product_attr">
+											Aliquam nec nulla accumsan, accumsan nisl in, rhoncus sapien.<br>
+											In mollis lorem a porta congue.<br>
+											Sed quis neque sit amet nulla maximus dignissim id mollis urna.<br>
+											Cras non libero at lorem laoreet finibus vel et turpis.<br>
+											Mauris maximus ligula at sem lobortis congue.<br>
+										</div>
+									</div>
+									<div class="pdct-dt-step">
+										<h4>How to Use</h4>
+										<div class="product_attr">
+											The peeled, orange segments can be added to the daily fruit bowl, and its juice is a refreshing drink.
+										</div>
+									</div>
+									<div class="pdct-dt-step">
+										<h4>Seller</h4>
+										<div class="product_attr">
+											Gambolthemes Pvt Ltd, Sks Nagar, Near Mbd Mall, Ludhana, 141001
+										</div>
+									</div>
+									<div class="pdct-dt-step">
+										<h4>Disclaimer</h4>
+										<p>Phasellus efficitur eu ligula consequat ornare. Nam et nisl eget magna aliquam consectetur. Aliquam quis tristique lacus. Donec eget nibh et quam maximus rutrum eget ut ipsum. Nam fringilla metus id dui sollicitudin, sit amet maximus sapien malesuada.</p>
+									</div>
+								</div>			
+							</div>					
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Featured Products Start -->
+		<div class="section145">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="main-title-tt">
+							<div class="main-title-left">
+								<span>For You</span>
+								<h2>Top Featured Products</h2>
+							</div>
+							<a href="#" class="see-more-btn">See All</a>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="owl-carousel featured-slider owl-theme">
+							{% for d in datas %}
+							<div class="item">
+								<div class="product-item">
+									<a href="{% url 'single_product_view' d.id %}" class="product-img">
+										{% for i in d.images.all %}
+										{% if forloop.first %}
+										<img src="{{ i.image.url }}" alt="{{d.title}}">
+										{% endif %}
+										{% endfor %}
+										<div class="product-absolute-options">
+											<span class="offer-badge-1">6% off</span>
+											<span class="like-icon" title="wishlist"></span>
+										</div>
+									</a>
+									<div class="product-text-dt">
+										<p>Available<span>({{d.stock}})</span></p>
+										<h4>{{ d.title }}</h4>
+										<div class="product-price">₹{{d.selling_price}} <span>₹{{d.discount_price}}</span></div>
+										<div class="qty-cart">
+											<div class="quantity buttons_added">
+												<input type="button" value="-" class="minus minus-btn">
+												<input type="number" step="1" name="quantity" value="1" class="input-text qty text">
+												<input type="button" value="+" class="plus plus-btn">
+											</div>
+											<span class="cart-icon"><i class="uil uil-shopping-cart-alt"></i></span>
+										</div>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Featured Products End -->
+	</div>
+	<!-- Body End -->
+
+	{% comment %} <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script>
+		$(document).ready(function(){
+			// Use event delegation to handle clicks on dynamically generated elements
+			$(document).on('click', '.cart-submit', function(){
+				// Get the closest form related to the clicked cart icon
+				var form = $(this).closest('form.add-to-cart-form');
+	
+				// Trigger form submission via AJAX
+				var formData = form.serialize(); // Serialize the form data
+				$.ajax({
+					type: 'POST',
+					url: form.attr('action'), // Form action URL
+					data: formData,
+					success: function(response){
+						// Show success alert
+						alert('Product added to cart successfully!');
+					},
+					error: function(){
+						// Show error alert
+						alert('An error occurred. Please try again.');
+					}
+				});
+			});
+		});
+	</script> {% endcomment %}
+	
+
+
+{%  endblock %}

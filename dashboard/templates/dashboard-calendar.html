@@ -1,0 +1,95 @@
+{% extends "dashboard_base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- main content start -->
+    <div class="main-content">
+        <div class="row">
+            <div class="col-xxl-9 col-lg-8">
+                <div class="panel">
+                    <div class="panel-body">
+                        <div id="calendar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-3 col-lg-4 calendar-sidebar">
+                <div class="panel mb-30">
+                    <div class="panel-header">
+                        <h5>Reserved Event</h5>
+                    </div>
+                    <div class="panel-body">
+                        <div id="external-events" class="sidebar-event-list">
+                            <div class="fc-event">My Event 1</div>
+                            <div class="fc-event">My Event 2</div>
+                            <div class="fc-event">My Event 3</div>
+                            <div class="fc-event">My Event 4</div>
+                            <div class="fc-event">My Event 5</div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="drop-remove">
+                                <label for="drop-remove" class="form-check-label">Remove after drop</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-header">
+                        <h5>Upcoming Events</h5>
+                    </div>
+                    <div class="panel-body">
+                        <div class="upcoming-event-list sidebar-event-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- main content end -->
+
+    <!-- event modal start -->
+    <div class="modal fade" id="event-modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="needs-validation" name="event-form" id="form-event" novalidate>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-title">Event</h5>
+                        <button type="button" class="btn btn-sm btn-icon btn-outline-primary" data-bs-dismiss="modal" aria-label="Close"><i class="fa-light fa-xmark"></i></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <div>
+                                    <label class="control-label form-label">Event Name</label>
+                                    <input class="form-control" placeholder="Insert Event Name" type="text" name="title" id="event-title" required>
+                                    <div class="invalid-feedback">Please provide a valid event name</div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label class="control-label form-label">Category</label>
+                                    <select class="form-control" name="category" id="event-category" required>
+                                        <option value="">Select a category</option>
+                                        <option value="bg-primary">Primary</option>
+                                        <option value="bg-danger">Danger</option>
+                                        <option value="bg-success">Success</option>
+                                        <option value="bg-info">Info</option>
+                                        <option value="bg-dark">Dark</option>
+                                        <option value="bg-warning">Warning</option>
+                                    </select>
+                                    <div class="invalid-feedback">Please select a valid event category</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="button" class="btn btn-sm btn-danger" id="btn-delete-event">Delete</button>
+                            </div>
+                            <div class="col-6 text-end">
+                                <button type="button" class="btn btn-sm btn-light me-1" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-sm btn-success" id="btn-save-event">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div> 
+    </div>
+{% endblock %}

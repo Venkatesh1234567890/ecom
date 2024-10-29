@@ -1,0 +1,310 @@
+{% extends "dashboard_base.html" %}
+{% load static %}
+{% block content %}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- main content start -->
+    <div class="main-content">
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="panel">
+                    <div class="panel-header">
+                        <h5>All Products</h5>
+                        <div class="btn-box d-flex flex-wrap gap-2">
+                            <div id="tableSearch"></div>
+                            <button class="btn btn-sm btn-icon btn-outline-primary"><i class="fa-light fa-arrows-rotate"></i></button>
+                            <div class="digi-dropdown dropdown">
+                                <button class="btn btn-sm btn-icon btn-outline-primary" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"><i class="fa-regular fa-ellipsis-vertical"></i></button>
+                                <ul class="digi-dropdown-menu dropdown-menu">
+                                    <li class="dropdown-title">Show Table Title</li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="showProduct" checked>
+                                            <label class="form-check-label" for="showProduct">
+                                                Products
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="showPublished" checked>
+                                            <label class="form-check-label" for="showPublished">
+                                                Published
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="showStock" checked>
+                                            <label class="form-check-label" for="showStock">
+                                                Stock
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="showPrice" checked>
+                                            <label class="form-check-label" for="showPrice">
+                                                Price
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="showSales" checked>
+                                            <label class="form-check-label" for="showSales">
+                                                Sales
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="showRating" checked>
+                                            <label class="form-check-label" for="showRating">
+                                                Rating
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-title pb-1">Showing</li>
+                                    <li>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control form-control-sm w-50" value="10">
+                                            <button class="btn btn-sm btn-primary w-50">Apply</button>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="btn-box">
+                                <a href="{% url 'dashboard-add-product' %}" class="btn btn-sm btn-primary"><i class="fa-light fa-plus"></i> Add New</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="product-table-quantity">
+                            <ul>
+                                <li class="text-white">All (23)</li>
+                                <li>Published (19)</li>
+                                <li>Draft (05)</li>
+                                <li>Trush (05)</li>
+                            </ul>
+                        </div>
+                        <div class="table-filter-option">
+                            <div class="row g-3">
+                                <div class="col-xl-10 col-9 col-xs-12">
+                                    <div class="row g-3">
+                                        <div class="col">
+                                            <form class="row g-2">
+                                                <div class="col">
+                                                    <select class="form-control form-control-sm" data-placeholder="Bulk action">
+                                                        <option value="">Bulk action</option>
+                                                        <option value="0">Edit</option>
+                                                        <option value="1">Move To Trash</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-sm btn-primary w-100">Apply</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="col">
+                                            <select class="form-control form-control-sm">
+                                                <option value="0">All Category</option>
+                                                <option value="1">Cloth</option>
+                                                <option value="2">Fashion</option>
+                                                <option value="3">Bag</option>
+                                                <option value="4">Food</option>
+                                                <option value="5">Medicine</option>
+                                                <option value="6">Watch</option>
+                                                <option value="7">Smart Phone</option>
+                                            </select>
+                                        </div>
+                                        <div class="col">
+                                            <select class="form-control form-control-sm">
+                                                <option value="0">All Product Type</option>
+                                                <option value="1">Downloadable</option>
+                                                <option value="2">Virtual</option>
+                                            </select>
+                                        </div>
+                                        <div class="col">
+                                            <select class="form-control form-control-sm">
+                                                <option value="0">All Product Stock</option>
+                                                <option value="1">In stock</option>
+                                                <option value="2">Out of stock</option>
+                                                <option value="3">On backorder</option>
+                                            </select>
+                                        </div>
+                                        <div class="col">
+                                            <button class="btn btn-sm btn-primary"><i class="fa-light fa-filter"></i> Filter</button>
+                                        </div>
+                                        <div class="col">
+                                            <div class="digi-dropdown dropdown">
+                                                <button class="btn btn-sm btn-icon btn-primary" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"><i class="fa-regular fa-plus"></i></button>
+                                                <ul class="digi-dropdown-menu dropdown-menu">
+                                                    <li class="dropdown-title">Filter Options</li>
+                                                    <li>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="filterCategory" checked>
+                                                            <label class="form-check-label" for="filterCategory">
+                                                                Category
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="filterProductType" checked>
+                                                            <label class="form-check-label" for="filterProductType">
+                                                                Product Type
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="filterStock" checked>
+                                                            <label class="form-check-label" for="filterStock">
+                                                                Stock
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-3 col-xs-12 d-flex justify-content-end">
+                                    <div id="productTableLength"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-dashed table-hover digi-dataTable all-product-table table-striped" id="allProductTable">
+                            <thead>
+                                <tr>
+                                    <th class="no-sort">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="markAllProduct">
+                                        </div>
+                                    </th>
+                                    <th>Product</th>
+                                    <th>SKU</th>
+                                    <th>Stock</th>
+                                    <th>Price</th>
+                                    <th>Sales</th>
+                                    <th>Rating</th>
+                                    <th>Published</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in products %}
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="table-product-card">
+                                            <div class="part-img">
+                                                {% for p in i.images.all %}
+                                                {% if forloop.first %}
+                                                <img src="{{ p.image.url }}" alt="Image">
+                                                {% endif %}
+                                                {% endfor %}
+                                            </div>
+                                            <div class="part-txt">
+                                                <span class="product-name">{{ i.title }}</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>CSJ0158</td>
+                                    <td>{{ i.stock }}</td>
+                                    <td>{{ i.discount_price }}</td>
+                                    <td>{{ i.selling_price }}</td>
+                                    <td>
+                                        <div class="rating">
+                                            <div class="star">
+                                                <i class="fa-sharp fa-solid fa-star starred"></i>
+                                                <i class="fa-sharp fa-solid fa-star starred"></i>
+                                                <i class="fa-sharp fa-solid fa-star starred"></i>
+                                                <i class="fa-sharp fa-solid fa-star starred"></i>
+                                                <i class="fa-sharp fa-solid fa-star"></i>
+                                            </div>
+                                            <div class="rating-amount">(42)</div>
+                                        </div>
+                                    </td>
+                                    <td>12/24/2023 01:05 PM</td>
+                                    <td>
+                                        <div class="btn-box">
+                                            <button><i class="fa-light fa-eye"></i></button>
+                                            <button data-bs-toggle="modal" data-bs-target="#editProductModal{{ i.id }}">
+                                                <i class="fa-light fa-pen"></i> 
+                                            </button>
+                                            <button><a href = "{% url 'delete_product' i.id %}"><i class="fa-light fa-trash"></i></a></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                 <!-- Edit Product Modal -->
+                                 <div class="modal fade" id="editProductModal{{ i.id }}" tabindex="-1" aria-labelledby="editProductModalLabel{{ i.id }}" aria-hidden="true" >
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="editProductModalLabel{{ i.id }}">Edit Product</h5>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <form method="post" action="{% url 'edit-product' i.id %}" enctype="multipart/form-data">
+                                          {% csrf_token %}
+                                            <div class="modal-body">
+                                                <div class="mb-3">
+                                                <label for="title" class="form-label">Title</label>
+                                                <input type="text" class="form-control" name="title" value="{{ i.title }}" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                <label for="selling" class="form-label">Selling Price</label>
+                                                <input type="number" class="form-control" name="selling" value="{{ i.selling_price }}" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                <label for="discount" class="form-label">Discount Price</label>
+                                                <input type="number" class="form-control" name="discount" value="{{ i.discount_price }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                <label for="category" class="form-label">Category</label>
+                                                <input type="text" class="form-control" name="category" value="{{ i.category }}" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                <label for="stock" class="form-label">Stock</label>
+                                                <input type="number" class="form-control" name="stock" value="{{ i.stock }}" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                <label for="image" class="form-label">Product Image</label>
+                                                <input type="file" class="form-control" name="image">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <div class="table-bottom-control"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+
+        <!-- footer start -->
+        <div class="footer">
+            <p>Copyright© <script>document.write(new Date().getFullYear())</script> All Rights Reserved By <span class="text-primary">Revel</span></p>
+        </div>
+        <!-- footer end -->
+    </div>
+    <!-- main content end -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+{% endblock %}
